@@ -9,10 +9,20 @@ const bot = new Twit({
   })
 
 
-bot.post('statuses/update', {status: 'hello world!'}, (err, data, response) => {
+// bot.post('statuses/update', {status: 'hello world!'}, (err, data, response) => {
+//   if(err) {
+//     console.log(err);
+//   } else {
+//     console.log(`${data.text} was twitted`)
+//   }
+// })
+
+bot.get('friends/list', {screen_name: 'kpsesuo'}, (err, data, response) => {
   if(err) {
     console.log(err);
   } else {
-    console.log(`${data.text} was twitted`)
+    data.users.forEach(user =>
+    console.log(`user: ${user.screen_name}`)
+  )
   }
 })
